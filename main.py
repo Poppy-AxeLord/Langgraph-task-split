@@ -13,16 +13,13 @@ from persistence import PersistenceManager
 # ----- 1. 环境配置 -----
 load_dotenv()
 client = OpenAI(
-    api_key=os.getenv("QWEN_API_KEY"),
-    base_url=os.getenv("QWEN_BASE_URL"),
+    api_key=os.getenv("OPENAI_API_KEY"),
+    base_url=os.getenv("OPENAI_API_BASE_URL"),
 )
 
-# 全局持久化管理器
-persistence_manager = PersistenceManager()
-
-# ----- 3. 增强状态定义 -----
+# ----- 2. 基础状态定义 -----
 class AgentState(TypedDict):
-    """工作流的状态容器（支持持久化）"""
+    """简化版工作流状态容器"""
     original_task: str                    # 原始任务
     subtasks: List[Dict[str, Any]]        # 子任务列表
     reasoning: str                        # 思考过程
@@ -45,7 +42,7 @@ class AgentState(TypedDict):
     approved_by: Optional[str]            # 审批人姓名/ID
 
 # ----- 4. 工具函数 -----
-def call_qwen(prompt: str, model="qwen-max") -> str:
+def call_qwen(prompt: str, model=os.getenv("OPENAI_API_MODEL")) -> str:
     """调用千问模型（流式输出）"""
     try:
         response = client.chat.completions.create(

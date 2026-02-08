@@ -1,0 +1,27 @@
+# LangGraph and its dependencies
+langgraph
+
+# Optional: For OpenAI models
+# openai
+
+# Optional: For Anthropic models
+# anthropic
+
+# Optional: For LangSmith tracing
+# langsmith
+
+# Optional: For UI components
+# streamlit
+
+# Optional: For database persistence
+# sqlalchemy
+# sqlite3
+
+# Optional: For testing
+# pytest
+# pytest-cov
+
+# Optional: For linting and formatting
+# black
+# ruff
+# mypy

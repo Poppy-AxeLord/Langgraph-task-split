@@ -481,10 +481,7 @@ def output_final_results(state: AgentState) -> AgentState:
 
 # ----- 6. 路由函数 -----
 def route_by_complexity(state: AgentState) -> str:
-    if state['needs_deep_analysis']:
-        return "深度分析"
-    else:
-        return "拆解任务"
+    return
 
 def should_continue_decomposition(state: AgentState) -> str:
     if state['needs_further_decomposition']:
